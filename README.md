@@ -15,32 +15,7 @@ CXR-LC is a CNN that predicts the risk of 12-year incident lung cancer based on 
 
 This repo contains data intended to promote reproducible research. It is not for clinical care or commercial use. 
 
-## Installation
-This inference code was tested on Ubuntu 18.04.3 LTS, conda version 4.8.0, python 3.7.7, fastai 1.0.61, cuda 10.2, pytorch 1.5.1 and cadene pretrained models 0.7.4. A full list of dependencies is listed in `environment.yml`. 
-
-Inference can be run on the GPU or CPU, and should work with ~4GB of GPU or CPU RAM. For GPU inference, a CUDA 10 capable GPU is required.
-
-This example is best run in a conda environment:
-
-```bash
-cd location_of_repo
-conda env create -n CXRLC -f environment.yml
-conda activate CXRLC
-python run_mixed.py dummy_datasets/test_images/ development/models/CXRLC dummy_datasets/Tabular_Data.csv output/output.csv --cont=age --cat=sex,smoke --target=is_lungcancer
-```
-
-Dummy data files are provided in `dummy_datasets/Tabular_Data.csv` and `dummy_datasets/test_images/;` dummy images are provided in the `test_images` folder. Weights for the CXR-Risk model are in `development/models/CXRLC.pth`. 
-
-Age input into the model must be normalized by the following equation:
-
-Model_Age = (age - 62.71093709214304) / 5.2805621041415804 .
-
-Sex should be encoded as 0 = Male and 1 = Female .
-
-Smoking Status should be encoded as 0 = current smoker and 1 = former smoker .
-
-
-A Docker image is planned -- watch this repo for details.
+Dummy data files are provided in `dummy_datasets/Tabular_Data.csv` and `dummy_datasets/test_images/;` dummy images are provided in the `test_images` folder. 
 
 ## Datasets
 PLCO (NCT00047385) data used for model development and testing are available from the National Cancer Institute (NCI, https://biometry.nci.nih.gov/cdas/plco/). NLST (NCT01696968) testing data is available from the NCI (https://biometry.nci.nih.gov/cdas/nlst/) and the American College of Radiology Imaging Network (ACRIN, https://www.acrin.org/acrin-nlstbiorepository.aspx). Due to the terms of our data use agreement, we cannot distribute the original data. Please instead obtain the data directly from the NCI and ACRIN.
